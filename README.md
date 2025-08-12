@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="640" height="640" alt="image" src="https://github.com/user-attachments/assets/7c5e7f48-9024-4da4-a8b3-a4256bdc6ff7" />
+  <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/7c5e7f48-9024-4da4-a8b3-a4256bdc6ff7" />
 </p>
 
 # 🌤 ESP-NOW MeteoStation v1 — First Blood
