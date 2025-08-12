@@ -40,4 +40,4 @@
 
 ---
 
-© 2025 Vlad Bovsunivskij — *"Техно чілл у світі мікроконтролерів"*
+© 2025 Vlad Bovsunivskij
