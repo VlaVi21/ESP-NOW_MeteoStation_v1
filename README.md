@@ -43,14 +43,14 @@
 
 ### 1️⃣ Схема підключення ESP32-S3 + GPS + MPU6050
 
-![ESP32-S3 wiring diagram](docs/images/esp32-s3-matrix-scheme.png)  
+![ESP32-S3 wiring diagram](esp32-s3-matrix-scheme.png)  
 *© 2025 Vlad Bovsunivskij — особиста розробка, виконана у графічному редакторі.*
 
 ---
 
 ### 2️⃣ Схема ESP32 + OLED + Джойстик
 
-![ESP32 OLED joystick diagram](docs/images/ESP32_WR_Scheme_V1.png)  
+![ESP32 OLED joystick diagram](ESP32_WR_Scheme_V1.png)  
 *Схема створена у [Wokwi](https://wokwi.com/). Автор: © 2025 Vlad Bovsunivskij.*
 
 ---
