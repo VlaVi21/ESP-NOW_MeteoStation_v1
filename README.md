@@ -43,7 +43,7 @@
 
 ### 1️⃣ Схема підключення ESP32-S3 + GPS + MPU6050
 
-![ESP32-S3 wiring diagram](esp32-s3-matrix-scheme.png)  
+![ESP32-S3 wiring diagram](ESP32-S3-Matrix_Scheme_V1.png)  
 *© 2025 Vlad Bovsunivskij — особиста розробка, виконана у графічному редакторі.*
 
 ---
