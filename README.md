@@ -52,9 +52,9 @@
 
 ![ESP32 OLED joystick diagram](ESP32_WR_Scheme_V1.png)  
 
-###VRX_PIN - 39
-###VRY_PIN - 36
-###BUT_PIN - 17
+**VRX_PIN** - 39
+**VRY_PIN** - 36
+**BUT_PIN** - 17
 
 *Схема створена у [Wokwi](https://wokwi.com/).
 
