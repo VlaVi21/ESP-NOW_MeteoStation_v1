@@ -1,31 +1,31 @@
-//ESP32 S3
-// 98:3d:ae:f2:cf:64
-//Передавач
+// ESP32 S3
+// 00:11:22:33:44:55
+// Передавач
 
-//Бібли для ESP-NOW
+// Бібли для ESP-NOW
 #include <esp_now.h>
 #include <WiFi.h>
 
 #include <Wire.h>
-#include <Adafruit_Sensor.h> //MCU6050
+#include <Adafruit_Sensor.h> // MCU6050
 #include <Adafruit_MPU6050.h>
 
-#include <TinyGPS++.h> //GPS
+#include <TinyGPS++.h> // GPS
 
 
-//GPS
+// GPS
 #define RXD2 4
 #define TXD2 5
 #define GPS_BAUD 9600
 
-TinyGPSPlus gps; //GPS
+TinyGPSPlus gps; // GPS
 HardwareSerial gpsSerial(2);
 
-uint8_t broadcastAddress[] = {0x24, 0xDC, 0xC3, 0x44, 0x34, 0x5C}; //MAC-адреса плати приймача
+uint8_t broadcastAddress[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55}; // MAC-адреса плати приймача
 
-Adafruit_MPU6050 mpu; //Змінна для MCU
+Adafruit_MPU6050 mpu; // Змінна для MCU
 
-//Структура для передачі даних
+// Структура для передачі даних
 typedef struct struct_message {
   char textd[32];
   float x, y, t;
@@ -37,12 +37,12 @@ typedef struct struct_message {
   int hour, minute, second;
 } struct_message;
 
-struct_message myData; //Збереження значень змінних
+struct_message myData; // Збереження значень змінних
 
-esp_now_peer_info_t peerInfo; //Інформація про одноранговий вузл
+esp_now_peer_info_t peerInfo; // Інформація про одноранговий вузл
 
-//Функція зворотного виклику, яка буде виконана під час надсилання повідомлення. 
-//У цьому випадку ця функція просто виводить, чи було повідомлення успішно доставлено, чи ні.
+// Функція зворотного виклику, яка буде виконана під час надсилання повідомлення. 
+// У цьому випадку ця функція просто виводить, чи було повідомлення успішно доставлено, чи ні.
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   Serial.print("\r\nLast Packet Send Status:\t");
   Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
@@ -52,31 +52,31 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Starting...");
 
-  WiFi.mode(WIFI_STA); //Налаштування пристрою, як станції Wi-Fi
+  WiFi.mode(WIFI_STA); // Налаштування пристрою, як станції Wi-Fi
 
-  //Ініціалізація ESP-NOW:
+  // Ініціалізація ESP-NOW:
   if (esp_now_init() != ESP_OK) {
   Serial.println("Error initializing ESP-NOW");
   return;
   }
 
-  //Після успішної ініціалізації ESP-NOW зареєструйте функцію зворотного виклику, яка буде викликана під час надсилання повідомлення. 
-  //У цьому випадку ми реєструємо для OnDataSent() функція, створена раніше.
+  // Після успішної ініціалізації ESP-NOW зареєструйте функцію зворотного виклику, яка буде викликана під час надсилання повідомлення. 
+  // У цьому випадку ми реєструємо для OnDataSent() функція, створена раніше.
   esp_now_register_send_cb(OnDataSent);
 
-  //Після цього нам потрібно підключитися до іншого пристрою ESP-NOW для надсилання даних.
-  //Register peer
+  // Після цього нам потрібно підключитися до іншого пристрою ESP-NOW для надсилання даних.
+  // Register peer
   memcpy(peerInfo.peer_addr, broadcastAddress, 6);
   peerInfo.channel = 0;
   peerInfo.encrypt = false;
 
-  //Add peer
+  // Add peer
   if (esp_now_add_peer(&peerInfo) != ESP_OK){
     Serial.println("Failed to add peer");
     return;
   }
 
-  Wire.begin(7, 6); //SDA, SCL
+  Wire.begin(7, 6); // SDA, SCL
   Serial.println("Wire initialized");
 
   // Ініціалізація MPU6050
@@ -87,7 +87,7 @@ void setup() {
     Serial.println("Found MPU6050 sensor");
   }
 
-  //GPS
+  // GPS
   gpsSerial.begin(GPS_BAUD, SERIAL_8N1, RXD2, TXD2);
   Serial.println("GPS Initialized");
 }
@@ -109,12 +109,12 @@ void loop() {
   // Наповнення структури
   strcpy(myData.textd, "Hello Ukraine");
 
-  //MCU
+  // MCU
   myData.x = a.acceleration.x; 
   myData.y = a.acceleration.y;
   myData.t = temp.temperature;
 
-  //GPS
+  // GPS
   myData.lat = gps.location.isValid() ? gps.location.lat() : 0.0;
   myData.lon = gps.location.isValid() ? gps.location.lng() : 0.0;
   myData.speed = gps.speed.isValid() ? gps.speed.kmph() : 0.0;
@@ -140,10 +140,10 @@ void loop() {
     myData.hour = myData.minute = myData.second = -1;
   }
   
-  //Відправляємо повідомлення 
+  // Відправляємо повідомлення 
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
 
-  //Перевірка, чи повідомленя успішно надіслане
+  // Перевірка, чи повідомленя успішно надіслане
   if (result == ESP_OK) {
     Serial.println("Sent with success");
   }
@@ -151,6 +151,7 @@ void loop() {
     Serial.println("Error sending the data");
   }
 
-  delay(1000); //Можна змінювати для швидкої передачі даних, мені і 1 секунди вистачає
+  delay(1000); // Можна змінювати для швидкої передачі даних, мені і 1 секунди вистачає
 }
+
 
