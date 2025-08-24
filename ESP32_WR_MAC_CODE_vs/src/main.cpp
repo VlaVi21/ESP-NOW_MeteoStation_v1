@@ -1,4 +1,4 @@
-// ESP32 Feather MAC: 24:dc:c3:44:34:5c
+// ESP32 Feather MAC: 00:11:22:33:44:55
 // Отримує дані через ESP-NOW і виводить на OLED
 
 // --- ESP-NOW ---
@@ -236,5 +236,6 @@ void dispAccelData() {
 
   display.display();
 }
+
 
 
