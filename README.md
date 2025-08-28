@@ -1,6 +1,15 @@
 <p align="center">
   <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/7c5e7f48-9024-4da4-a8b3-a4256bdc6ff7" />
 </p>
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT">
+  </a>
+  <img src="https://img.shields.io/badge/Platform-ESP32-blue.svg" alt="Platform: ESP32">
+  <img src="https://img.shields.io/badge/Framework-Arduino-orange.svg" alt="Framework: Arduino">
+  <img src="https://img.shields.io/badge/Language-C++-brightgreen.svg" alt="Language: C++">
+  <img src="https://img.shields.io/badge/Version-1.2-yellow.svg" alt="Version 1">
+</p>
 
 # 🌤 ESP-NOW MeteoStation v1 — First version
 
