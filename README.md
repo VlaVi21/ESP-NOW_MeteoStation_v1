@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Platform-ESP32-blue.svg" alt="Platform: ESP32">
   <img src="https://img.shields.io/badge/Framework-Arduino-orange.svg" alt="Framework: Arduino">
   <img src="https://img.shields.io/badge/Language-C++-brightgreen.svg" alt="Language: C++">
-  <img src="https://img.shields.io/badge/Version-1.2-yellow.svg" alt="Version 1.1">
+  <img src="https://img.shields.io/badge/Version-1.1-yellow.svg" alt="Version 1.1">
 </p>
 
 # 🌤 ESP-NOW MeteoStation v1 — First version
